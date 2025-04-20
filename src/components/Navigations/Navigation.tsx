@@ -9,20 +9,22 @@ import DesktopDropdown from "./DesktopDropdown";
 
 const Navigation: React.FC = () => {
   return (
-    <nav className="m-auto mb-12 max-w-432">
-      <div className="flex justify-between px-21.5">
-        <a href="/" className="flex items-center gap-x-2.5">
-          <LogoIcon className="size-14" />
-          <span className="text-3xl font-semibold pt-5">NayBe</span>
+    <nav className="max-3xl:mb-10.5 m-auto mb-12 max-w-432 max-xl:mb-9 max-sm:mb-16">
+      <div className="max-3xl:px-16 flex justify-between px-21.5 max-2xl:px-9 max-xl:px-4 max-lg:px-0">
+        <a href="/" className="flex items-center gap-x-2.5 max-sm:gap-x-2">
+          <LogoIcon className="size-14 max-xl:size-14 max-lg:size-14" />
+          <span className="text-3xl pt-5 font-semibold max-2xl:text-2xl max-xl:text-xl max-lg:text-lg">
+            NayBe
+          </span>
         </a>
-        <ul className="flex items-stretch gap-x-10">
+        <ul className="flex items-stretch gap-x-10 max-2xl:gap-x-8 max-xl:gap-x-6 max-lg:hidden">
           {navigationLinks.map((link) => (
             <li
               key={link.id}
               className="group relative flex cursor-pointer items-center gap-x-1.75 font-medium transition-all duration-200"
             >
               <a
-                className="text-grey-600 group-hover:text-black"
+                className="text-grey-600 group-hover:text-black max-2xl:text-[.9375rem] max-xl:text-[.875rem]"
                 href={link.href}
               >
                 {link.text}
@@ -36,10 +38,10 @@ const Navigation: React.FC = () => {
             </li>
           ))}
         </ul>
-        <div className="flex items-center gap-x-5">
+        <div className="flex items-center gap-x-5 max-xl:gap-x-4 max-lg:hidden">
           <BellIcon className="fill-grey-600 cursor-pointer hover:fill-black" />
           <SearchIcon className="fill-grey-600 cursor-pointer hover:fill-black" />
-          <button className="bg-primary-700 hover:bg-primary-800 cursor-pointer rounded-[0.625rem] px-8 py-3.5 text-lg font-medium text-white transition-all duration-200">
+          <button className="bg-primary-700 hover:bg-primary-800 cursor-pointer rounded-[0.625rem] px-8 py-3.5 text-lg font-medium text-white transition-all duration-200 max-xl:py-3 max-xl:text-sm max-xl:font-normal">
             Join Now
           </button>
         </div>
