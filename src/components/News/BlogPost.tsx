@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import React from "react";
 import { type BlogPost } from "../../utils/contentTypes";
+import formatDate from "../../utils/formatDate";
 
 const BlogPost: React.FC<BlogPost> = ({ img, alt, date, summary, title }) => {
   const [imageLoaded, setImageLoaded] = React.useState<boolean>(false);
@@ -22,7 +23,7 @@ const BlogPost: React.FC<BlogPost> = ({ img, alt, date, summary, title }) => {
       </div>
       <div className="mr-11 max-w-195">
         <p className="tracking-6 text-grey-900 mb-4.5 text-[1.25rem] font-medium">
-          {date}
+          {formatDate(date)}
         </p>
         <h4 className="tracking-6 mb-6 text-[2.75rem] font-medium">{title}</h4>
         <p className="text-grey-800 mb-6 text-lg/13.5">{summary}</p>
