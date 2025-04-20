@@ -1,4 +1,5 @@
 import ExploreMore from "./components/ExploreMore/ExploreMore";
+import Footer from "./components/Footer";
 import FrequentTravelers from "./components/FrequentTravelers";
 import Header from "./components/Header";
 import Hero from "./components/Hero/Hero";
@@ -25,6 +26,7 @@ function App() {
         <FrequentTravelers />
         <Testimonials />
       </Main>
+      <Footer />
     </Page>
   );
 }

@@ -329,9 +329,14 @@ const footerCols: FooterCol[] = [
     id: 4,
     heading: "Contact Information",
     links: [
-      { id: 1, href: "#", Icon: Phone, name: "1 248 416 6573" },
-      { id: 2, href: "#", Icon: Email, name: "gotravel@gmail.com" },
-      { id: 3, href: "#", Icon: LocationIcon, name: "25 East 29th Street, NY" },
+      { id: 1, href: "#", Icon: Phone, name: "62 813 3435 7456" },
+      { id: 2, href: "#", Icon: Email, name: "naybglobal@gmail.com" },
+      {
+        id: 3,
+        href: "#",
+        Icon: LocationIcon,
+        name: "Jl Halmahera 8, Mojokerto, Jawa Timur, Indonesia",
+      },
     ],
   },
 ];
