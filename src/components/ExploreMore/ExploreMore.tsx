@@ -30,7 +30,7 @@ const ExploreMore: React.FC = () => {
           </div>
           <div className="mb-2 flex gap-x-6">
             <button
-              className="bg-grey-300 not-disabled:hover:bg-grey-400 flex size-18 cursor-pointer place-content-center rounded-full transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50"
+              className="bg-grey-500 not-disabled:hover:bg-grey-600 flex size-18 cursor-pointer place-content-center rounded-full transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50"
               aria-label="arrow left"
               onClick={handleLeftClick}
               disabled={currIndex === 0}
