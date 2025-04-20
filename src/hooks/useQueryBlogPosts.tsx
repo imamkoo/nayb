@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import getBlogPosts from "../api/api";
+import api from "../api/api";
 
 const useQueryBlogPosts = () => {
   const {
@@ -8,7 +8,7 @@ const useQueryBlogPosts = () => {
     isLoading,
   } = useQuery({
     queryKey: ["blogPosts"],
-    queryFn: getBlogPosts,
+    queryFn: api.getBlogPosts,
   });
 
   return { blogPosts, error, isLoading };

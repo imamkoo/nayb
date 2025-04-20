@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import useQueryLocations from "../../hooks/useQueryLocation";
 import { LOCATION_CARDS_SHOWN } from "../../utils/constants";
-import { locations } from "../../utils/content";
+import Error from "../Error";
 import CaretUp from "../Icons/CaretUp";
+import Loader from "../Loader";
 import LocationCard from "./LocationCard";
 
 const ExploreMore: React.FC = () => {
+  const { locations, error, isLoading } = useQueryLocations();
+
   const [currIndex, setCurrIndex] = useState<number>(0);
 
-  const totalLocations = locations.length;
+  const totalLocations = locations?.length || 0;
   const renderedLocations = locations?.slice(
     currIndex,
     currIndex + LOCATION_CARDS_SHOWN
@@ -47,11 +51,20 @@ const ExploreMore: React.FC = () => {
             </button>
           </div>
         </div>
-        <ul className="mt-33 grid grid-cols-3 gap-x-29 gap-y-24">
-          {renderedLocations?.map((location) => (
-            <LocationCard location={location} key={location.id} />
-          ))}
-        </ul>
+        {isLoading && !error && <Loader />}
+        {!isLoading && !error && (
+          <ul className="mt-33 grid grid-cols-3 gap-x-29 gap-y-24">
+            {renderedLocations?.map((location) => (
+              <LocationCard location={location} key={location.id} />
+            ))}
+          </ul>
+        )}
+        {!isLoading && error && (
+          <Error>
+            It looks like something went wrong while loading our travel
+            locations.
+          </Error>
+        )}
       </div>
     </section>
   );

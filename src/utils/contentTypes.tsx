@@ -77,23 +77,23 @@ interface FooterSocials {
 }
 
 interface Lead {
-  createdAt: number;
+  createdAt: string;
   fullName: string;
   emailAddress: string;
 }
 
 export type {
-  NavigationLink,
-  HeroBenefit,
-  Step,
-  Service,
   BlogPost,
-  Location,
-  Testimonial,
   FooterCol,
-  FooterSocials,
   FooterLink,
+  FooterSocials,
+  HeroBenefit,
   Lead,
+  Location,
+  NavigationLink,
+  Service,
+  Step,
+  Testimonial,
 };
 
 // BLOG POSTS CSV

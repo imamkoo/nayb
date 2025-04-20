@@ -1,6 +1,8 @@
 import { AnimatePresence, motion } from "motion/react";
 import React, { MouseEvent, useState } from "react";
 import useFormAndValidation from "../hooks/useFormAndValidation";
+import useInsertLead from "../hooks/useInsertLead";
+import { FORM_STATE_DURATION } from "../utils/constants";
 import Checkmark from "./Icons/Checkmark";
 
 interface FormState {
@@ -29,20 +31,45 @@ const FrequentTravelers: React.FC = () => {
       fullName: "",
     });
 
+  const mutation = useInsertLead({
+    onSuccess: handleSuccess,
+    onError: handleError,
+  });
+
   async function handleSubmit(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     if (isChecked && isValid) {
       // we are now entering a pending state..
       setFormState({ currentState: "pending", errorMessage: null });
 
-      // now we can reset the form (if successful)
-      setTimeout(
-        () => setFormState({ currentState: "success", errorMessage: null }),
-        2000
-      );
-
-      resetForm();
+      // lets attempt to insert lead data
+      mutation.mutate({
+        createdAt: new Date().toISOString(),
+        fullName: values.fullName,
+        emailAddress: values.emailAddress,
+      });
     }
+  }
+
+  function handleSuccess() {
+    resetForm();
+    setIsChecked(false);
+    setFormState({ currentState: "success", errorMessage: null });
+
+    // Tell the browser to run this function after 1250 ms, reset form state
+    setTimeout(
+      () => setFormState({ currentState: "idle", errorMessage: null }),
+      FORM_STATE_DURATION
+    );
+  }
+
+  function handleError(error: Error) {
+    setFormState({ currentState: "error", errorMessage: error.message });
+
+    setTimeout(
+      () => setFormState({ currentState: "idle", errorMessage: null }),
+      FORM_STATE_DURATION
+    );
   }
 
   return (
