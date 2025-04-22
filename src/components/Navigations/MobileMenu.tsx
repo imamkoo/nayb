@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { useMenuContext } from "../../contexts/MobileMenuContext";
@@ -56,12 +57,12 @@ export default function MobileMenu() {
               }
             >
               <div className="flex cursor-pointer items-center gap-x-1.75">
-                <a
+                <Link
                   className={`text-grey-600 ${activeLinkId === link.id ? "text-black" : ""}`}
-                  href="#"
+                  to={link.href}
                 >
                   {link.text}
-                </a>
+                </Link>
                 {link.dropdown && (
                   <span
                     className={`flex size-6 items-center justify-center transition-all duration-200 ${link.id === activeLinkId ? "rotate-180" : ""}`}
